@@ -13,5 +13,23 @@ submit.addEventListener("click", e => {
         if (password.value != confirmPassword.value) {
             alert("Password confirmation does not match");
         }
+    } else {
+        let errorMsg = "";
+        if (!email.checkValidity()) {
+            errorMsg += "Email: " + email.validationMessage + "\n";
+        }
+        if (!country.checkValidity()) {
+            errorMsg += "Country: " + country.validationMessage + "\n";
+        }
+        if (!zip.checkValidity()) {
+            errorMsg += "Zip: " + zip.validationMessage + "\n";
+        }
+        if (!password.checkValidity()) {
+            errorMsg += "Password: " + password.validationMessage + "\n";
+        }
+        if (!confirmPassword.checkValidity()) {
+            errorMsg += "Confirm password: " + confirmPassword.validationMessage + "\n";
+        }
+        alert(errorMsg);
     }
 });
