@@ -1,8 +1,6 @@
 import "./style.css";
 
-const submit = document.querySelector("#submit");
-
-submit.addEventListener("click", e => {
+const validateForm = function() {
     const email = document.querySelector("#email");
     const country = document.querySelector("#country");
     const zip = document.querySelector("#zip");
@@ -12,7 +10,9 @@ submit.addEventListener("click", e => {
     if (email.checkValidity() && country.checkValidity() && zip.checkValidity() && password.checkValidity() && confirmPassword.checkValidity()) {
         if (password.value != confirmPassword.value) {
             alert("Password confirmation does not match");
+            return false;
         }
+        return true;
     } else {
         let errorMsg = "";
         if (!email.checkValidity()) {
@@ -31,5 +31,6 @@ submit.addEventListener("click", e => {
             errorMsg += "Confirm password: " + confirmPassword.validationMessage + "\n";
         }
         alert(errorMsg);
+        return false;
     }
-});
+};
